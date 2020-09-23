@@ -1,0 +1,40 @@
+:root {
+  --colorlightblue: #bfcad9;
+  --colorredwarm: #cb501b;
+  --colorblackish: #1a4338;
+  --colormagenta: #a80d67;
+}
+
+html {
+  background-color: var(--colorlightblue);
+  font-family: arial;
+  color: var(--colorblackish);
+}
+h1 {
+  font-weight: normal;
+  font-size: 100px;
+  color: var(--colorredwarm);
+  letter-spacing: 15px;
+  margin: 20px 0px 0px 0px;
+  text-align: center;
+}
+h3 {
+  font-weight: normal;
+  font-size: 40px;
+  color: var(--colormagenta);
+  letter-spacing: 8px;
+  margin: 20px 0px 0px 0px;
+  text-align: center;
+}
+.main{
+  max-width: 800px;
+  margin: auto;
+}
+.rules-container {
+  border: 2px solid green;
+  margin: 30px auto;
+  line-height: 1.5em;
+  padding:20px;
+}
+@media only screen and (max-width: 800px) {
+}
