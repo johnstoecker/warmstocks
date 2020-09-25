@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <script src="main.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+          onload="this.onload=function(){};handleClientLoad()"
+          onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
     <link rel="stylesheet" href="main.css">
     <link rel="icon"
       type="image/png"
@@ -21,7 +24,7 @@
       </div>
     </div>
     <div class="content-container" id="leaderboard-container">
-      Leaderboard
+      <div id="leaderboard"></div>
     </div>
     <div class="content-container" id="rules-container" style="display: none;">
       <div class="rule">
@@ -68,5 +71,6 @@
     </div>
     <a href="https://docs.google.com/spreadsheets/d/1_4IOELTABwgEyPDKjr7L7Wbo27Gbo9eiVNtPlOIUOP8/edit#gid=0"><button>Open Tracker</button></a>
   </div>
+  <div id="data"/>
 </body>
 </html>
