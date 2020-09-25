@@ -5,6 +5,7 @@
   --colorblackish: #1a4338;
   --colormagenta: #a80d67;
   --colorbeige: #d7cd89;
+  --colorbeigeish: #ebe6c4;
   --colorlightbeige:#f5f2e1;
 
 }
@@ -48,21 +49,43 @@ h3 {
   font-size: 20px;
   padding: 10px;
   background-color: var(--colorbeige);
+  text-decoration: none;
 }
 
 .navigation-tab.active {
   background-color: var(--colorlightbeige);
 }
 
-/* .navigation-tab:not(:first-child) {
-  margin-left: 20px;
-} */
+.navigation-tab:not(:first-child) {
+  border-left: 1px solid black;
+  /* margin-left: 20px; */
+}
+
+.navigation-tab:hover {
+  background-color: var(--colorbeigeish);
+}
+
+.external-link-icon {
+  width: 15px;
+  height: auto;
+  margin-left: 3px;
+}
 
 .main{
   max-width: 800px;
   background-color: var(--colorlightblue);
   margin: auto;
   padding: 10px 40px;
+}
+
+.content-container {
+  margin-bottom: 20px;
+}
+.leader-row {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 2px;
 }
 
 .rules-container {

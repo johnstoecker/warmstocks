@@ -17,21 +17,46 @@ var TAGLINES = ["Your YOLO space for Q4",
 
 var TABS = ["leaderboard", "rules"]
 
-var GOOGER_CLIENT_ID = "xxx"
-var GOOGER_API_KEY = "xxx"
-var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
-var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
-
 function loadData() {
-  // var url="https://docs.google.com/spreadsheet/pub?key=1_4IOELTABwgEyPDKjr7L7Wbo27Gbo9eiVNtPlOIUOP8&single=true&gid=0&range=A1&output=csv";
-  // xmlhttp=new XMLHttpRequest();
-  // xmlhttp.onreadystatechange = function() {
-  //   if(xmlhttp.readyState == 4 && xmlhttp.status==200){
-  //     document.getElementById("leaderboard").innerHTML = xmlhttp.responseText;
-  //   }
-  // };
-  // xmlhttp.open("GET",url,true);
-  // xmlhttp.send(null);
+  var url="https://sheets.googleapis.com/v4/spreadsheets/1_4IOELTABwgEyPDKjr7L7Wbo27Gbo9eiVNtPlOIUOP8/values/Main!B4:C30?key=AIzaSyCjz8-wT6vG8WQJJbyqQjD1_30xVCFwXyQ";
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    var leaders = []
+    if(xmlhttp.readyState == 4) {
+      if (xmlhttp.status==200){
+        var values = JSON.parse(xmlhttp.responseText)['values'];
+        for(var i=0; i<values.length; i++) {
+          var row = values[i];
+          if (row.length == 2) {
+            leaders.push(row);
+          }
+        }
+        leaders = leaders.sort(leaderSort);
+      } else {
+        leaders = [['Fakeman', 1000], ['Placeholder', 900], ['Nobody', 600]]
+      }
+    }
+
+    var innerHTML = '';
+    // fun, manual HTML construction in pure JS....
+    for (var i=0; i<leaders.length; i++) {
+      innerHTML+=`<div class='leader-row'><div class='leader-name'>${leaders[i][0]}</div><div class='leader-warmth'>${leaders[i][1]}</div></div>`
+    }
+    document.getElementById("leaderboard").innerHTML = innerHTML;
+  };
+  xmlhttp.open("GET",url,true);
+  xmlhttp.send(null);
+}
+
+
+function leaderSort(a, b) {
+  if (a[1] < b[1]) {
+    return 1;
+  }
+  if (a[1] > b[1]) {
+    return -1;
+  }
+  return 0;
 }
 
 var chooseTab = function(tab) {
@@ -48,58 +73,10 @@ var chooseTab = function(tab) {
   document.getElementById(tab+"-tab").classList.add("active");
 }
 
-
-function listMajors() {
-  gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
-  }).then(function(response) {
-    var range = response.result;
-    document.getElementById("leaderboard").innerHTML = range.values;
-    // if (range.values.length > 0) {
-    //   appendPre('Name, Major:');
-    //   for (i = 0; i < range.values.length; i++) {
-    //     var row = range.values[i];
-    //     // Print columns A and E, which correspond to indices 0 and 4.
-    //     appendPre(row[0] + ', ' + row[4]);
-    //   }
-    // } else {
-    //   appendPre('No data found.');
-    // }
-  }, function(response) {
-    console.error('Error: ' + response.result.error.message);
-  });
-}
-
-
 var initialize = function(){
     document.getElementById("tagline").innerHTML = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
     loadData();
 };
-
-function handleClientLoad() {
-  gapi.load('client:auth2', initClient);
-}
-
-
-function initClient() {
-  gapi.client.init({
-    apiKey: GOOGER_API_KEY,
-    clientId: GOOGER_CLIENT_ID,
-    discoveryDocs: DISCOVERY_DOCS,
-    scope: SCOPES
-  }).then(function () {
-    // Listen for sign-in state changes.
-    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-    // Handle the initial sign-in state.
-    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    authorizeButton.onclick = handleAuthClick;
-    signoutButton.onclick = handleSignoutClick;
-  }, function(error) {
-    console.log(JSON.stringify(error, null, 2));
-  });
-}
 
 if (
     document.readyState === "complete" ||
