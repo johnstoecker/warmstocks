@@ -17,8 +17,8 @@ var TAGLINES = ["Your YOLO space for Q4",
 
 var TABS = ["leaderboard", "rules"]
 
-var GOOGER_CLIENT_ID = "294344663767-q4nhebps1mv4k4tor5et123478io234d.apps.googleusercontent.com"
-var GOOGER_API_KEY = "AIzaSyCLnUbUGZwGKeknJvv-Lt7FkwBl9_LfOzw"
+var GOOGER_CLIENT_ID = "xxx"
+var GOOGER_API_KEY = "xxx"
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
@@ -97,7 +97,7 @@ function initClient() {
     authorizeButton.onclick = handleAuthClick;
     signoutButton.onclick = handleSignoutClick;
   }, function(error) {
-    appendPre(JSON.stringify(error, null, 2));
+    console.log(JSON.stringify(error, null, 2));
   });
 }
 
