@@ -15,7 +15,21 @@ TAGLINES = ["Your YOLO space for Q4",
 "The house always wins",
 "Stocks only go up...right?"];
 
+TABS = ["leaderboard", "rules"]
 
+var chooseTab = function(tab) {
+  var containerElements = document.getElementsByClassName("content-container");
+  for (var i=0; i<containerElements.length; i++) {
+    containerElements[i].style.display = "none";
+  }
+  var tabElements = document.getElementsByClassName("navigation-tab");
+  for (var i=0; i<containerElements.length; i++) {
+    tabElements[i].classList.remove("active")
+  }
+
+  document.getElementById(tab+"-container").style.display = "inherit";
+  document.getElementById(tab+"-tab").classList.add("active");
+}
 
 var initialize = function(){
     document.getElementById("tagline").innerHTML = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];

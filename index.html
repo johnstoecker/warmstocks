@@ -4,6 +4,9 @@
 <head>
     <script src="main.js"></script>
     <link rel="stylesheet" href="main.css">
+    <link rel="icon"
+      type="image/png"
+      href="graph_down.png">
     <title>Warm Stocks</title>
 </head>
 <body>
@@ -11,8 +14,16 @@
     <div class="top-bar">
       <h1>WARM STOCKS</h1>
       <h3 id="tagline"></h3>
+      <div class="tab-bar">
+        <a onclick="chooseTab('leaderboard')" class="navigation-tab active" id="leaderboard-tab">Leaderboard</a>
+        <a onclick="chooseTab('rules')" class="navigation-tab" id="rules-tab">Rules</a>
+        <a onclick="chooseTab('faq')" class="navigation-tab" id="faq-tab">FAQ</a>
+      </div>
     </div>
-    <div class="rules-container">
+    <div class="content-container" id="leaderboard-container">
+      Leaderboard
+    </div>
+    <div class="content-container" id="rules-container" style="display: none;">
       <div class="rule">
         1. Start with $1000 of your own money on Oct 1
       </div>
@@ -21,6 +32,38 @@
       </div>
       <div class="rule">
         3. The investor with the most money at Dec 31 will win a certificate!
+      </div>
+    </div>
+    <div class="content-container" id="faq-container" style="display: none;">
+      <div class="question">
+        Do I need to show any proof of gains or losses?
+      </div>
+      <div class="answer">
+        No, this is a gentleman's wager.
+      </div>
+      <div class="question">
+        Are there any limits to the asset classes I buy/sell?
+      </div>
+      <div class="answer">
+        No, but you can't do any actual work to get your money, as Adam Smith intended. Buying/selling Magic Cards is okay, but rounding up your friends for a Scentsy party is not.
+      </div>
+      <div class="question">
+        Should I go all in on VIX calls?
+      </div>
+      <div class="answer">
+        Yes, Q4 is going to be nuts.
+      </div>
+      <div class="question">
+        How do options work?
+      </div>
+      <div class="answer">
+        You put money into Robinhood and the money just kind of disappears. Like magic!
+      </div>
+      <div class="question">
+        What kind of certificate will the winner get? Will it be nice?
+      </div>
+      <div class="answer">
+        Yes, I will use only the finest certificate template from Docs, and the very best A4 sheet I can find near the printer.
       </div>
     </div>
     <a href="https://docs.google.com/spreadsheets/d/1_4IOELTABwgEyPDKjr7L7Wbo27Gbo9eiVNtPlOIUOP8/edit#gid=0"><button>Open Tracker</button></a>

@@ -1,15 +1,25 @@
 :root {
+  --colorverylightblue: #e5e9ef;
   --colorlightblue: #bfcad9;
   --colorredwarm: #cb501b;
   --colorblackish: #1a4338;
   --colormagenta: #a80d67;
+  --colorbeige: #d7cd89;
+  --colorlightbeige:#f5f2e1;
+
 }
 
 html {
-  background-color: var(--colorlightblue);
+  background-color: var(--colorverylightblue);
   font-family: arial;
   color: var(--colorblackish);
 }
+
+body {
+  margin: 0px;
+  display: flex;
+}
+
 h1 {
   font-weight: normal;
   font-size: 100px;
@@ -18,23 +28,58 @@ h1 {
   margin: 20px 0px 0px 0px;
   text-align: center;
 }
+
 h3 {
   font-weight: normal;
   font-size: 40px;
   color: var(--colormagenta);
   letter-spacing: 8px;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px;
   text-align: center;
 }
+
+.tab-bar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.navigation-tab {
+  cursor:pointer;
+  font-size: 20px;
+  padding: 10px;
+  background-color: var(--colorbeige);
+}
+
+.navigation-tab.active {
+  background-color: var(--colorlightbeige);
+}
+
+/* .navigation-tab:not(:first-child) {
+  margin-left: 20px;
+} */
+
 .main{
   max-width: 800px;
+  background-color: var(--colorlightblue);
   margin: auto;
+  padding: 10px 40px;
 }
+
 .rules-container {
   border: 2px solid green;
   margin: 30px auto;
   line-height: 1.5em;
   padding:20px;
 }
+
+.question {
+  font-weight:bold;
+}
+
+.answer {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 800px) {
 }
