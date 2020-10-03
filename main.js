@@ -33,7 +33,7 @@ function loadData() {
         }
         leaders = leaders.sort(leaderSort);
       } else {
-        leaders = [['Fakeman', 1000], ['Placeholder', 900], ['Nobody', 600]]
+        leaders = [['Fakeman', 1000], ['Placeholder', 900.75], ['Nobody', 600], ['Mr. Who', 1001.65], ['Mrs. Who', 965]].sort(leaderSort);
       }
     }
 
@@ -50,10 +50,12 @@ function loadData() {
 
 
 function leaderSort(a, b) {
-  if (a[1] < b[1]) {
+  var num1 = parseFloat(a[1]);
+  var num2 = parseFloat(b[1]);
+  if (num1 < num2) {
     return 1;
   }
-  if (a[1] > b[1]) {
+  if (num1 > num2) {
     return -1;
   }
   return 0;
